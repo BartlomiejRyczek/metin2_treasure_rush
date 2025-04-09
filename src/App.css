@@ -194,4 +194,44 @@
       opacity: 0.5;
     }
   }
+
+  .lootbox-container {
+    margin-top: 2rem;
+    overflow: hidden;
+  }
+  
+  .items-display {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    border: 2px solid gold;
+    margin-bottom: 1rem;
+  }
+  
+  .selector {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 5px;
+    border-left: 1px solid red;
+    border-right: 1px solid red;
+    pointer-events: none;
+  }
+  
+  .items-slider {
+    display: flex;
+    transition: transform 0s;
+    will-change: transform;
+  }
+  
+  .slider-item {
+    min-width: 120px;
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
   

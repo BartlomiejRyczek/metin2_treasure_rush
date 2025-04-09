@@ -119,38 +119,86 @@ function GamePage() {
   const [isSpinning, setIsSpinning] = useState(false);
   const spinCost = 100;
 
+
+  const items = [
+    { id: 1, name: "Miecz Smogorożca", img: "/api/placeholder/60/60", rarity: "legendary", chance: 5, value: 5000 },
+    { id: 2, name: "Zbroja Niebieskiego Smoka", img: "/api/placeholder/60/60", rarity: "epic", chance: 10, value: 2000 },
+    { id: 3, name: "Miecz Czerwonego Smoka", img: "/api/placeholder/60/60", rarity: "epic", chance: 10, value: 1800 },
+    { id: 4, name: "Łuk Fenixa", img: "/api/placeholder/60/60", rarity: "rare", chance: 15, value: 1000 },
+    { id: 5, name: "Hełm Mściciela", img: "/api/placeholder/60/60", rarity: "rare", chance: 15, value: 800 },
+    { id: 6, name: "Naszyjnik Żmii", img: "/api/placeholder/60/60", rarity: "uncommon", chance: 20, value: 400 },
+    { id: 7, name: "Buty Wędrowca", img: "/api/placeholder/60/60", rarity: "uncommon", chance: 20, value: 300 },
+    { id: 8, name: "Żelazny Miecz", img: "/api/placeholder/60/60", rarity: "common", chance: 25, value: 100 },
+    { id: 9, name: "Skórzany Hełm", img: "/api/placeholder/60/60", rarity: "common", chance: 30, value: 50 },
+    { id: 10, name: "Zardzewiała Zbroja", img: "/api/placeholder/60/60", rarity: "common", chance: 50, value: 20 },
+    { id: 11, name: "Miecz Duszy", img: "/api/placeholder/60/60", rarity: "legendary", chance: 4, value: 5200 },
+    { id: 12, name: "Zbroja Cienia", img: "/api/placeholder/60/60", rarity: "legendary", chance: 5, value: 4800 },
+    { id: 13, name: "Pierścień Króla Demonów", img: "/api/placeholder/60/60", rarity: "legendary", chance: 5, value: 5000 },
+    { id: 14, name: "Szpony Bestii", img: "/api/placeholder/60/60", rarity: "epic", chance: 8, value: 2200 },
+    { id: 15, name: "Hełm Czerwonej Krwi", img: "/api/placeholder/60/60", rarity: "epic", chance: 9, value: 2100 },
+    { id: 16, name: "Tarcza Smoczego Oka", img: "/api/placeholder/60/60", rarity: "epic", chance: 10, value: 2000 },
+    { id: 17, name: "Zbroja Złotego Wilka", img: "/api/placeholder/60/60", rarity: "rare", chance: 13, value: 1200 },
+    { id: 18, name: "Miecz Płomienia", img: "/api/placeholder/60/60", rarity: "rare", chance: 15, value: 1100 },
+    { id: 19, name: "Amulet Przeznaczenia", img: "/api/placeholder/60/60", rarity: "rare", chance: 14, value: 1000 },
+    { id: 20, name: "Buty Cienia", img: "/api/placeholder/60/60", rarity: "rare", chance: 15, value: 900 },
+    { id: 21, name: "Szata Mędrca", img: "/api/placeholder/60/60", rarity: "uncommon", chance: 18, value: 600 },
+    { id: 22, name: "Rękawice Zwinności", img: "/api/placeholder/60/60", rarity: "uncommon", chance: 20, value: 500 },
+    { id: 23, name: "Bransoleta Ognia", img: "/api/placeholder/60/60", rarity: "uncommon", chance: 19, value: 450 },
+    { id: 24, name: "Kolczuga Strażnika", img: "/api/placeholder/60/60", rarity: "uncommon", chance: 21, value: 470 },
+    { id: 25, name: "Pas Wojownika", img: "/api/placeholder/60/60", rarity: "uncommon", chance: 20, value: 400 },
+    { id: 26, name: "Sztylet Złodzieja", img: "/api/placeholder/60/60", rarity: "common", chance: 25, value: 150 },
+    { id: 27, name: "Pierścień Odporności", img: "/api/placeholder/60/60", rarity: "common", chance: 30, value: 100 },
+    { id: 28, name: "Kaptur Zwiadowcy", img: "/api/placeholder/60/60", rarity: "common", chance: 28, value: 90 },
+    { id: 29, name: "Skórzana Kamizelka", img: "/api/placeholder/60/60", rarity: "common", chance: 35, value: 80 },
+    { id: 30, name: "Stary Łuk", img: "/api/placeholder/60/60", rarity: "common", chance: 40, value: 70 },
+    { id: 31, name: "Miecz Półksiężyca", img: "/api/placeholder/60/60", rarity: "epic", chance: 9, value: 1900 },
+    { id: 32, name: "Zbroja Nocnego Wędrowca", img: "/api/placeholder/60/60", rarity: "epic", chance: 10, value: 1850 },
+    { id: 33, name: "Hełm Lotosu", img: "/api/placeholder/60/60", rarity: "rare", chance: 14, value: 950 },
+    { id: 34, name: "Bransoleta Księżyca", img: "/api/placeholder/60/60", rarity: "rare", chance: 15, value: 800 },
+    { id: 35, name: "Kolczuga Weterana", img: "/api/placeholder/60/60", rarity: "uncommon", chance: 20, value: 350 },
+    { id: 36, name: "Amulet Czystości", img: "/api/placeholder/60/60", rarity: "uncommon", chance: 20, value: 300 },
+    { id: 37, name: "Hełm Rybaka", img: "/api/placeholder/60/60", rarity: "common", chance: 30, value: 60 },
+    { id: 38, name: "Skórzane Rękawice", img: "/api/placeholder/60/60", rarity: "common", chance: 35, value: 50 },
+    { id: 39, name: "Złamana Włócznia", img: "/api/placeholder/60/60", rarity: "common", chance: 45, value: 30 },
+    { id: 40, name: "Zbutwiałe Buty", img: "/api/placeholder/60/60", rarity: "common", chance: 50, value: 20 }
+  ];
+
   const handleLogout = () => {
     alert("Wylogowanie wyłączone w trybie offline");
   };
 
   const handleSpin = () => {
     if (isSpinning || (!freeSpins && balance < spinCost)) return;
-
-    setIsSpinning(true);
+    
+    // Resetuj poprzedni wynik
+    setResult(null);
+    
     if (freeSpins > 0) {
       setFreeSpins(freeSpins - 1);
     } else {
       setBalance(balance - spinCost);
     }
-
+    
+    setIsSpinning(true);
     navigator.vibrate?.([100, 50, 100]);
-
-    const item = {
-      name: "Miecz Smogorożca",
-      rarity: "legendary",
-      value: 5000,
-      img: "/api/placeholder/60/60"
-    };
-
-    setTimeout(() => {
-      const newBalance = balance + Math.floor(item.value * multiplier);
-      setResult(item);
-      setBalance(newBalance);
-      setMultiplier((prev) => Math.min(5.0, Math.round((prev + 0.5) * 10) / 10));
-      setRank("Legenda");
-      setIsSpinning(false);
-    }, 3000);
   };
+
+
+const handleSpinComplete = (item) => {
+  if (item) {
+    console.log("GamePage otrzymał przedmiot:", item);
+    
+    // Oblicz nowy stan gry na podstawie wylosowanego przedmiotu
+    const newBalance = balance + Math.floor(item.value * multiplier);
+    setBalance(newBalance);
+    setMultiplier((prev) => Math.min(5.0, Math.round((prev + 0.5) * 10) / 10));
+    setRank("Legenda");
+    
+    // Upewnij się, że przekazujesz kompletny obiekt
+    setResult({...item});
+  }
+  setIsSpinning(false);
+};
 
   return (
     <div className="app-container">
@@ -162,10 +210,12 @@ function GamePage() {
         rank={rank}
       />
       <Lootbox
+        items={items}
         onSpin={handleSpin}
         isSpinning={isSpinning}
         freeSpins={freeSpins}
         spinCost={spinCost}
+        onSpinComplete={handleSpinComplete}
       />
       <ResultModal result={result} onClose={() => setResult(null)} />
       <footer>Metin2 Treasure Rush © 2025 - Symulator Skrzynek</footer>
