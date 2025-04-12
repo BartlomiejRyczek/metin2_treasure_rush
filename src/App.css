@@ -221,17 +221,3 @@
     pointer-events: none;
   }
   
-  .items-slider {
-    display: flex;
-    transition: transform 0s;
-    will-change: transform;
-  }
-  
-  .slider-item {
-    min-width: 120px;
-    text-align: center;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  
-  

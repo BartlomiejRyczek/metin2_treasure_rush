@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
+import { useEffect } from "react";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -8,6 +9,23 @@ function LoginForm() {
   const [isRegistering, setIsRegistering] = useState(false);
   const [error, setError] = useState("");
 
+
+  useEffect(() => {
+    const createAdminAccount = async () => {
+      try {
+        await createUserWithEmailAndPassword(auth, "admin@test.com", "1234");
+        console.log("Konto admin utworzone.");
+      } catch (error) {
+        if (error.code === "auth/email-already-in-use") {
+          console.log("Konto admin już istnieje.");
+        } else {
+          console.error("Błąd tworzenia konta admin:", error);
+        }
+      }
+    };
+  
+    createAdminAccount();
+  }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");

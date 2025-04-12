@@ -21,7 +21,7 @@ function App() {
 
   return (
     <Routes>
-     {/*<Route
+      <Route
         path="/login"
         element={!user ? <LoginPage /> : <Navigate to="/game" />}
       />
@@ -32,7 +32,7 @@ function App() {
       <Route
         path="*"
         element={<Navigate to={user ? "/game" : "/login"} />}
-      />*/}
+      />*/
     <Route path="*" element={<GamePage />} />
     </Routes>
   );
